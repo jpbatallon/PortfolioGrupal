@@ -7,6 +7,7 @@ const menuButton = $(".menu-icon");
 const menuHeader = $(".menu-stack");
 const menuClose = $(".close-menu");
 const menuHeaderList = $(".menu-stack a");
+const closeMenuButton = $(".close-button");
 
 document.addEventListener("DOMContentLoaded", () => {
   function resize() {
@@ -22,7 +23,8 @@ document.addEventListener("DOMContentLoaded", () => {
   function openHeaderMenu() {
     menuHeader.style.display = "block";
     menuButton.style.display = "none";
-    menuHeaderList.style.display = "inline-flex"
+    menuHeaderList.style.display = "grid";
+    form.style.zIndex = "-1";
     isMenuHeaderOpen = true;
     document.addEventListener("click", outSideClick);
   }
@@ -30,14 +32,20 @@ document.addEventListener("DOMContentLoaded", () => {
   function closeMenuHeader() {
     menuHeader.style.display = "";
     menuButton.style.display = "";
+    form.style.zIndex = "0";
     isMenuHeaderOpen = false;
     document.addEventListener("click", outSideClick);
+  }
+
+  function closeButton() {
+    closeMenuButton.addEventListener("click", closeMenuHeader);
   }
 
   menuButton.onclick = function (event) {
     event.stopPropagation();
     if (!isMenuHeaderOpen) {
       openHeaderMenu();
+      closeButton();
     } else {
       closeMenuHeader();
     }

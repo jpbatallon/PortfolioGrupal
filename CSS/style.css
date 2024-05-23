@@ -20,7 +20,7 @@ header {
   background-color: transparent;
   backdrop-filter: blur(10px);
   animation-timeline: scroll();
-  animation-range: 0 200px;
+  animation-range: 0 150px;
   animation: add-shadow linear both;
   box-shadow: none;
 }
@@ -81,17 +81,50 @@ header {
 }
 
 .menu-stack {
-  position: relative;
-  height: 300px;
-  width: 200px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
   background-color: #b69867;
   display: none;
   text-align: center;
   color: #ccc;
+  z-index: 999;
 }
 
 .menu-stack a {
+  font-size: x-large;
   color: #fff;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 50px auto;
+  width: fit-content;
+}
+
+.close-button {
+  position: absolute;
+  font-size: x-large;
+  top: 5px;
+  left: 10px;
+  cursor: pointer;
+  animation: button-animation 2s forwards;
+}
+
+.close-button:hover {
+  color: rgb(255, 113, 88);
+  transition: 0.3s ease-in-out;
+}
+
+@keyframes button-animation {
+  from {
+    transform: rotate(0) scale(0);
+  }
+  to {
+    transform: rotate(360deg) scale(1.1);
+    filter: contrast(200%);
+  }
 }
 
 .image_container {
@@ -224,6 +257,10 @@ article {
 
   .menu-stack {
     color: #fff;
+  }
+
+  .menu-stack a {
+    display: grid;
   }
 
   .image_container img {
