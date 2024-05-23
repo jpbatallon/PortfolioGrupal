@@ -18,8 +18,10 @@
     </div>
     <nav>
       <ul class="navigation">
-        <li><a href="#SobreNosotros">Sobre nosotros</a></li>
+        <li><a href="#SobreNosotros">Nosotros</a></li>
         <li><a href="#Proyectos">Proyectos</a></li>
+        <li><a href="#Integrantes">Integrantes</a></li>
+        <li><a href="#Contacto">Contactanos</a></li>
       </ul>
     </nav>
   </header>
@@ -28,11 +30,11 @@
       alt="Foto del grupo">
   </div>
   <article>
-    <p id="#SobreNosotros" class="sobre-nosotros">
+    <p id="SobreNosotros" class="sobre-nosotros">
       Somos un grupo de la Universidad Tecnológica Nacional de San Rafael, estamos cursando el primer año, aprendiendo
       distintos lenguajes como Python, JavaScript y Java.
     </p>
-    <div class="integrantes">
+    <div id="Integrantes" class="integrantes">
       <h3>
         INTEGRANTES:
       </h3>
@@ -50,6 +52,23 @@
       </div>
     </div>
   </article>
+  <form class="formulario">
+    <label>
+      Nombre:
+      <input type="text" placeholder="Ingrese su nombre" id="" />
+    </label>
+    <label>
+      E-mail:
+      <input type="email" placeholder="Ingrese su e-mail" />
+    </label>
+    <label>
+      Comentario:
+      <textarea class="comentario" placeholder="Ingrese su comentario"></textarea>
+    </label>
+    <button class="enviar" type="submit">
+      Enviar
+    </button>
+  </form>
 </body>
 
 </html>
