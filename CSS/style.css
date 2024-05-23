@@ -87,24 +87,11 @@ header {
   background-color: #b69867;
   display: none;
   text-align: center;
-  z-index: 99;
   color: #ccc;
 }
 
 .menu-stack a {
   color: #fff;
-  z-index: 99;
-}
-
-.close-menu {
-  position: absolute;
-  top: 0;
-  left: 0;
-  cursor: pointer;
-}
-
-.close-menu:hover {
-  fill: tomato;
 }
 
 .image_container {
@@ -234,10 +221,6 @@ article {
 
   .menu-icon {
     display: block;
-  }
-
-  .menu-icon:hover .menu-stack {
-    display: flex;
   }
 
   .menu-stack {

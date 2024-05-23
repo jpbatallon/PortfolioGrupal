@@ -6,6 +6,7 @@ const textarea = $(".comentario");
 const menuButton = $(".menu-icon");
 const menuHeader = $(".menu-stack");
 const menuClose = $(".close-menu");
+const menuHeaderList = $(".menu-stack a");
 
 document.addEventListener("DOMContentLoaded", () => {
   function resize() {
@@ -21,13 +22,14 @@ document.addEventListener("DOMContentLoaded", () => {
   function openHeaderMenu() {
     menuHeader.style.display = "block";
     menuButton.style.display = "none";
+    menuHeaderList.style.display = "inline-flex"
     isMenuHeaderOpen = true;
     document.addEventListener("click", outSideClick);
   }
 
   function closeMenuHeader() {
     menuHeader.style.display = "";
-    menuButton.style.display = "block";
+    menuButton.style.display = "";
     isMenuHeaderOpen = false;
     document.addEventListener("click", outSideClick);
   }
