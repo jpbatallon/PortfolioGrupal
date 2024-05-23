@@ -155,7 +155,6 @@ article {
   margin: 0 auto;
   display: grid;
   position: relative;
-  z-index: -1;
 }
 
 .formulario > * {
