@@ -1,0 +1,88 @@
+.navigation {
+  display: flex;
+  gap: 8rem;
+  list-style: none;
+  justify-content: center;
+  margin: 20px 0px 20px -50px;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.navigation li {
+  border: 1px solid #b69867;
+  border-radius: 50px;
+  padding-inline: 13px;
+  padding-block: 5px;
+  background-color: #b69867;
+  cursor: pointer;
+}
+
+.navigation li:hover {
+  transform: scale(1.1);
+  transition: 0.3s ease-in-out;
+  filter: drop-shadow(0 0 10px #222);
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+body {
+  background: linear-gradient(to bottom, #444, #888);
+  height: 100%;
+  justify-content: center;
+  margin: 0 auto;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+.image_container img {
+  width: 500px;
+  height: 500px;
+  border-radius: 10px;
+  border: 1px solid #605c5c;
+  box-shadow: 3px 6px 9px #222;
+}
+
+.image_container {
+  margin: 40px auto;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+.titulo h1 {
+  justify-content: center;
+  display: flex;
+  font-size: 45px;
+  background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(to bottom, #f5b041, #b69867, red);
+  text-wrap: balance;
+}
+
+.titulo {
+  margin: 40px auto;
+}
+
+.sobre-nosotros {
+  text-align: center;
+  font-size: larger;
+  margin: 20px;
+  font-weight: 700;
+}
+
+.integrantes {
+  justify-content: center;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.contenedor {
+  display: flex;
+  flex-direction: column;
+  font-weight: 500;
+}
