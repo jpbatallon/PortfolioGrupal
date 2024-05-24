@@ -2,7 +2,7 @@
 
 <hr>
 
-Este es un portafolio web para prácticas de la Universisad Tecnoñógica Nacional de San Rafael, Mendoza.
+Este es un portafolio web para prácticas de la Universisad Tecnológica Nacional de San Rafael, Mendoza.
 
 Para este portafolio se han usado las siguientes herramientas:
 
