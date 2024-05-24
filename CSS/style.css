@@ -103,6 +103,16 @@ header {
   width: fit-content;
 }
 
+.footer-menu {
+  font-size: xx-large;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding-top: 30px;
+  border-top: 2px dashed #444;
+}
+
 .close-button {
   position: absolute;
   font-size: x-large;
