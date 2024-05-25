@@ -47,7 +47,7 @@
         </svg>
         <div class="menu-stack">
           <span class="close-button">✖</span>
-          <a href="#sobre-nosotros">Nosotros</a>
+          <a href="src/pages/nosotros.html">Nosotros</a>
           <a href="#proyectos">Proyectos</a>
           <a href="#integrantes">Grupo</a>
           <a href="#contacto">Contacto</a>
@@ -74,7 +74,7 @@
         Git, GitBash, GitHub, metodologías ágiles como SCRUM en Jira.
       </p>
       <div id="contenedor" class="integrantes">
-        <h3>INTEGRANTES:</h3>
+        <h3>Integrantes:</h3>
         <div class="integrantes">
           <p>
             • Batallón Costa, Juan Pablo • Calcagni, Gabriel • Delgado, Daniela
@@ -84,25 +84,37 @@
         </div>
       </div>
     </article>
+    <h3 align="center">Comentarios</h3>
     <form class="formulario" id="=contacto">
       <label>
         Nombre:
-        <input type="text" placeholder="Ingrese su nombre" id="name" />
+        <input
+          type="text"
+          placeholder="Ingrese su nombre"
+          id="name"
+          class="inputs"
+        />
       </label>
       <label>
         E-mail:
-        <input type="email" placeholder="Ingrese su e-mail" id="mail" />
+        <input
+          type="email"
+          placeholder="Ingrese su e-mail"
+          id="mail"
+          class="inputs"
+        />
       </label>
       <label>
         Comentario:
         <textarea
-          class="comentario"
+          class="comentario inputs"
           placeholder="Ingrese su comentario"
         ></textarea>
       </label>
-      <button id="submit" class="enviar" type="submit">Enviar</button>
+      <button id="submit" class="enviar">Enviar</button>
     </form>
-    <div id="comments"></div>
+    <div id="last-visit"></div>
+    <div id="map"></div>
     <footer align="center">&copy;Terreneitor · Web</footer>
     <script src="src/main.js"></script>
   </body>
