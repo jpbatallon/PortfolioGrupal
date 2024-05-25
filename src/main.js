@@ -1,6 +1,6 @@
 const $ = (selector) => document.querySelector(selector);
-const name = $("#name");
-const mail = $("#mail");
+const names = $("#name");
+const email = $("#mail");
 const form = $("form");
 const textarea = $(".comentario");
 const submitButton = $("#submit");
@@ -9,6 +9,8 @@ const menuHeader = $(".menu-stack");
 const menuClose = $(".close-menu");
 const menuHeaderList = $(".menu-stack a");
 const closeMenuButton = $(".close-button");
+const last = $("#last-visit");
+const map = $("#map");
 
 function formatDate(date) {
   const dateFormat = new Date(date).toLocaleDateString("es-Es", {
@@ -51,10 +53,19 @@ const getCurrentLocation = () => {
   }
 };
 
-function createMap(accuracy, longitud, latitud) {
-  const urlMap = `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d${accuracy}!2d${longitud}!3d${latitud}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95d3056cee406bf3%3A0x80cbd8c58e2ca91d5e0!3m2!1ses-419!2sar!4v1694255285033!5m2!1ses-419!2sar.`;
+function saveDataLocalToStorage(name, data) {
+  const res = JSON.stringify(data);
+  localStorage.setItem(name, res);
+  return true;
+}
+
+function createMap(longitud, latitud) {
+  const urlMap = `https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3362.721134731404!2d${longitud}!3d${latitud}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMzLCsDMzJzM3LjAiUyA2NcKwMTQnMDYuNSJX!5e0!3m2!1ses-419!2sar!4v1716605671110!5m2!1ses-419!2sar`;
   const iframe = document.createElement("iframe");
   iframe.src = urlMap;
+  iframe.setAttribute("referrerpolicy", "no-referrer-when-downgrade");
+  iframe.setAttribute("loading", "lazy");
+  iframe.classList.add("location-map");
   return iframe;
 }
 
@@ -63,7 +74,6 @@ document.addEventListener("DOMContentLoaded", () => {
     textarea.addEventListener("input", () => {
       textarea.style.height = "100px";
       textarea.style.height = textarea.scrollHeight + "px";
-      textarea.dispatchEvent(new Event("input"));
     });
   }
 
@@ -106,20 +116,15 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  const sendFormData = (formName = 1) => {
-    localStorage.setItem("terreneitor-form", formName);
-    name.addEventListener("input", () => {
-      for (name in name) {
-        localStorage.setItem("nombre", name.value);
-      }
-    });
-    mail.addEventListener("input", () => {
-      localStorage.setItem("correo", mail.value);
-    });
-    textarea.addEventListener("input", () => {
-      localStorage.setItem("comentario", textarea.value);
-    });
-  };
+  function sendDataForm(event) {
+    event.preventDefault();
+    const dataJson = {
+      nombre: names.value,
+      correo: email.value,
+      comentario: textarea.value,
+    };
+    saveDataLocalToStorage("formulario", JSON.stringify(dataJson));
+  }
 
   function getDate() {
     const fecha = localStorage.getItem("localization");
@@ -129,41 +134,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const dataLocation = getDate();
 
-  const fetchComents = () => {
-    const localName = localStorage.getItem("nombre");
-    const localMail = localStorage.getItem("correo");
-    const localComment = localStorage.getItem("comentario");
-    const comments = $("#comments");
-
-    if (localName && localMail && localComment) {
-      comments.innerHTML = `
-        <div>
-            <p>Publicado por ${localName}</p> 
-            <a href="mailto:${localMail}">${localMail}</a>
-            <p>${localComment}</p>
-            <hr>
-            <p>Ultima visita: ${dataLocation.fecha}</p>
-        </div>
-        `;
-    }
-    const mapa = createMap(
-      dataLocation.accuracy,
-      dataLocation.longitud,
-      dataLocation.latitud
-    );
-    document.body.appendChild(mapa);
+  const lastVisit = () => {
+    last.innerHTML = `<p>Ultima visita: ${dataLocation.fecha}</p>`;
   };
 
-  if (localStorage.length >= 0) {
-    fetchComents();
-  } else {
-    throw new Error("No hay datos en local storage.");
-  }
+  const mapa = createMap(dataLocation.longitud, dataLocation.latitud);
+  map.appendChild(mapa);
 
   submitButton.addEventListener("click", () => {
-    fetchComents();
+    sendDataForm();
   });
+  lastVisit();
   resize();
-  sendFormData();
   getCurrentLocation();
 });
