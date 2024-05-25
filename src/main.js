@@ -72,6 +72,7 @@ function createMap(longitud, latitud) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  getCurrentLocation();
   function resize() {
     comentario.addEventListener("input", () => {
       comentario.style.height = "100px";
@@ -160,5 +161,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
   lastVisit();
   resize();
-  getCurrentLocation();
 });
