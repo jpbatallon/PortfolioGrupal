@@ -2,7 +2,7 @@ const $ = (selector) => document.querySelector(selector);
 const names = $("#name");
 const email = $("#mail");
 const form = $("form");
-const textarea = $(".comentario");
+const comentario = $(".comentario");
 const submitButton = $("#submit");
 const menuButton = $(".menu-icon");
 const menuHeader = $(".menu-stack");
@@ -11,6 +11,7 @@ const menuHeaderList = $(".menu-stack a");
 const closeMenuButton = $(".close-button");
 const last = $("#last-visit");
 const map = $("#map");
+const inputs = document.querySelectorAll(".inputs");
 
 function formatDate(date) {
   const dateFormat = new Date(date).toLocaleDateString("es-Es", {
@@ -71,9 +72,9 @@ function createMap(longitud, latitud) {
 
 document.addEventListener("DOMContentLoaded", () => {
   function resize() {
-    textarea.addEventListener("input", () => {
-      textarea.style.height = "100px";
-      textarea.style.height = textarea.scrollHeight + "px";
+    comentario.addEventListener("input", () => {
+      comentario.style.height = "100px";
+      comentario.style.height = comentario.scrollHeight + "px";
     });
   }
 
@@ -116,15 +117,21 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  function sendDataForm(event) {
-    event.preventDefault();
+  function sendDataForm() {
     const dataJson = {
       nombre: names.value,
       correo: email.value,
-      comentario: textarea.value,
+      comentario: comentario.value,
     };
-    saveDataLocalToStorage("formulario", JSON.stringify(dataJson));
+    inputs.forEach(() => saveDataLocalToStorage("formulario", dataJson));
+    if (localStorage.length >= 0) {
+      alert(`Muchas gracias por enviar el formulario ${dataJson.nombre}.`);
+    }
   }
+
+  submitButton.addEventListener("click", () => {
+    sendDataForm();
+  });
 
   function getDate() {
     const fecha = localStorage.getItem("localization");
@@ -141,9 +148,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const mapa = createMap(dataLocation.longitud, dataLocation.latitud);
   map.appendChild(mapa);
 
-  submitButton.addEventListener("click", () => {
-    sendDataForm();
-  });
   lastVisit();
   resize();
   getCurrentLocation();

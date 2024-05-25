@@ -85,23 +85,33 @@
       </div>
     </article>
     <h3 align="center">Comentarios</h3>
-    <form class="formulario" id="=contacto" action="POST">
+    <form class="formulario" id="=contacto">
       <label>
         Nombre:
-        <input type="text" placeholder="Ingrese su nombre" id="name" />
+        <input
+          type="text"
+          placeholder="Ingrese su nombre"
+          id="name"
+          class="inputs"
+        />
       </label>
       <label>
         E-mail:
-        <input type="email" placeholder="Ingrese su e-mail" id="mail" />
+        <input
+          type="email"
+          placeholder="Ingrese su e-mail"
+          id="mail"
+          class="inputs"
+        />
       </label>
       <label>
         Comentario:
         <textarea
-          class="comentario"
+          class="comentario inputs"
           placeholder="Ingrese su comentario"
         ></textarea>
       </label>
-      <button id="submit" class="enviar" type="submit">Enviar</button>
+      <button id="submit" class="enviar">Enviar</button>
     </form>
     <div id="last-visit"></div>
     <div id="map"></div>
