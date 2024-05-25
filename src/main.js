@@ -8,6 +8,7 @@ const menuButton = $(".menu-icon");
 const menuHeader = $(".menu-stack");
 const menuClose = $(".close-menu");
 const menuHeaderList = $(".menu-stack a");
+const menuLink = document.querySelectorAll(".menu-stack a");
 const closeMenuButton = $(".close-button");
 const last = $("#last-visit");
 const map = $("#map");
@@ -87,6 +88,15 @@ document.addEventListener("DOMContentLoaded", () => {
     form.style.zIndex = "-1";
     isMenuHeaderOpen = true;
     document.addEventListener("click", outSideClick);
+    document.addEventListener("click", closeMenuOnClickLinks);
+  }
+
+  function closeMenuOnClickLinks() {
+    menuLink.forEach((link) =>
+      link.addEventListener("click", () => {
+        closeMenuHeader();
+      })
+    );
   }
 
   function closeMenuHeader() {
