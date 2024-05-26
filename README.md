@@ -2,9 +2,16 @@
 
 #
 
-<p>Este es un portafolio web para prácticas de la Universisad Tecnológica Nacional de San Rafael, Mendoza.</p>
-
-<p>Para este portafolio se han usado las siguientes herramientas:</p>
+<p>Este es un portafolio web diseñado para las prácticas de la Universidad Tecnológica Nacional (UTN) de San Rafael, Mendoza.</p>
+<p>Para su desarrollo, se han empleado las siguientes herramientas:</p>
+<ul>
+    <li><strong>HTML5:</strong> Para la estructura y el contenido de las páginas web.</li>
+    <li><strong>CSS3:</strong> Para el diseño visual y la presentación estilizada.</li>
+    <li><strong>JavaScript:</strong> Para añadir interactividad y dinamismo a la interfaz.</li>
+    <li><strong>Bootstrap:</strong> Para facilitar el diseño responsivo y moderno.</li>
+    <li><strong>Git y GitHub:</strong> Para la gestión del código fuente y la colaboración en equipo.</li>
+</ul>
+<p>Este portafolio representa una oportunidad para aplicar y demostrar los conocimientos adquiridos durante el curso, así como para mejorar las habilidades técnicas y de trabajo en equipo.</p>
 
 | Lenguaje                                                                                             | Descripción  |
 | ---------------------------------------------------------------------------------------------------- | ------------ |
