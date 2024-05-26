@@ -13,6 +13,7 @@ const closeMenuButton = $(".close-button");
 const last = $("#last-visit");
 const map = $("#map");
 const inputs = document.querySelectorAll(".inputs");
+const integrantes = $(".integrantes p");
 
 function formatDate(date) {
   const dateFormat = new Date(date).toLocaleDateString("es-Es", {
@@ -80,6 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  
   let isMenuHeaderOpen = false;
 
   function openHeaderMenu() {
