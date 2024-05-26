@@ -1,6 +1,6 @@
 <h3 align="center">Portafolio Web Terreneitor</h3>
 
-<hr />
+#
 
 <p>Este es un portafolio web para prácticas de la Universisad Tecnológica Nacional de San Rafael, Mendoza.</p>
 

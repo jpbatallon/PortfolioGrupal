@@ -81,7 +81,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  
   let isMenuHeaderOpen = false;
 
   function openHeaderMenu() {
