@@ -70,8 +70,14 @@ header {
   75% {
     opacity: 0.7;
   }
-  85% {
+  90% {
     opacity: 0.2;
+  }
+  85% {
+    opacity: 1.1;
+  }
+  95% {
+    opacity: 0.3;
   }
   100% {
     opacity: 1;
@@ -80,7 +86,7 @@ header {
 
 .logo:hover {
   animation: flicker 3s infinite;
-  text-shadow: 0 0 10px #f5b041;
+  text-shadow: 0 0 12px #f5b041;
 }
 
 .container-logo img {
@@ -119,6 +125,25 @@ header {
   text-align: center;
   color: #ccc;
   z-index: 999;
+  animation: rolldown 0.5s forwards linear;
+}
+
+@keyframes rolldown {
+  0% {
+    height: 0;
+  }
+  50% {
+    height: 100vh;
+  }
+  75% {
+    height: 85vh;
+  }
+  90% {
+    height: 90vh;
+  }
+  100% {
+    height: 100vh;
+  }
 }
 
 .menu-stack a {
