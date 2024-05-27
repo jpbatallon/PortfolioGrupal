@@ -8,10 +8,74 @@ const menuButton = $(".menu-icon");
 const menuHeader = $(".menu-stack");
 const menuClose = $(".close-menu");
 const menuHeaderList = $(".menu-stack a");
+const menuLink = document.querySelectorAll(".menu-stack a");
 const closeMenuButton = $(".close-button");
 const last = $("#last-visit");
 const map = $("#map");
 const inputs = document.querySelectorAll(".inputs");
+const year = new Date().getFullYear();
+const footer = $("footer");
+
+const usrersAvatars = [
+  {
+    user1: "https://avatars.githubusercontent.com/u/126372943?s=100&v=4",
+    user2: "https://avatars.githubusercontent.com/u/106635349?v=4",
+    user3: "https://avatars.githubusercontent.com/u/164105708?v=4",
+    user4: "https://avatars.githubusercontent.com/u/166343183?v=4",
+    user5: "https://avatars.githubusercontent.com/u/128757903?v=4",
+    user6: "https://avatars.githubusercontent.com/u/164107854?v=4",
+    user7: "https://avatars.githubusercontent.com/u/134340520?v=4",
+    user8:
+      "https://avatars.githubusercontent.com/u/93176365?s=400&u=256e212b81ba355aa6d1bda5b4f9882ed53474ea&v=4",
+  },
+];
+
+const usrersNames = [
+  {
+    user1: "Agustín Salinas",
+    user2: "Maximiliano Tomio",
+    user3: "Elias Jacob",
+    user4: "Juan P. Batallón",
+    user5: "Daniela Delgado",
+    user6: "Marina Rebolloso",
+    user7: "Franco Morales",
+    user8: "Gabriel Calcagni",
+  },
+];
+
+const usrersUrl = [
+  {
+    user1: "https://github.com/agussalinas",
+    user2: "https://github.com/maxidtomio",
+    user3: "https://github.com/eliasdjacob",
+    user4: "https://github.com/jpbatallon",
+    user5: "https://github.com/silvia-daniela-delgado",
+    user6: "https://github.com/marinarebolloso",
+    user7: "https://github.com/Mendoxeneixe",
+    user8: "https://github.com/solidsnk86",
+  },
+];
+
+function createAvatars() {
+  const userAvatar = usrersAvatars[0];
+  const userNames = usrersNames[0];
+  const userUrl = usrersUrl[0];
+  const avatarHtml = Object.keys(userAvatar)
+    .map(
+      (key) =>
+        `
+        <div class="container-users">
+        <img src="${userAvatar[key]}" alt="Avatars de github" title="${userNames[key]}" class="avatar-img"/>
+          <a href="${userUrl[key]}" title="Ir al perfil de GitHub de ${userNames[key]}" target="_blank">
+            ${userNames[key]}
+          </a>
+        </div>
+        `
+    )
+    .join("");
+
+  $(".integrantes").innerHTML = avatarHtml;
+}
 
 function formatDate(date) {
   const dateFormat = new Date(date).toLocaleDateString("es-Es", {
@@ -71,6 +135,7 @@ function createMap(longitud, latitud) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  getCurrentLocation();
   function resize() {
     comentario.addEventListener("input", () => {
       comentario.style.height = "100px";
@@ -87,6 +152,17 @@ document.addEventListener("DOMContentLoaded", () => {
     form.style.zIndex = "-1";
     isMenuHeaderOpen = true;
     document.addEventListener("click", outSideClick);
+    document.addEventListener("click", closeMenuOnClickLinks);
+  }
+
+  function closeMenuOnClickLinks() {
+    if (menuLink) {
+      menuLink.forEach((link) =>
+        link.addEventListener("click", () => {
+          closeMenuHeader();
+        })
+      );
+    }
   }
 
   function closeMenuHeader() {
@@ -148,7 +224,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const mapa = createMap(dataLocation.longitud, dataLocation.latitud);
   map.appendChild(mapa);
 
+  const addFooter = () => {
+    footer.innerHTML = `&copy;Terreneitor · Web ${year}`;
+  };
+
+  createAvatars();
   lastVisit();
   resize();
-  getCurrentLocation();
+  addFooter();
 });

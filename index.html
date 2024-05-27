@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -39,6 +39,7 @@
           xmlns="http://www.w3.org/2000/svg"
           width="18"
           height="18"
+          title="Menú"
         >
           <path
             fill="#ddd"
@@ -66,26 +67,24 @@
         height="480px"
       />
     </div>
+    <span id="sobre-nosotros"></span>
     <article>
-      <p id="sobre-nosotros" class="sobre-nosotros">
+      <p class="sobre-nosotros">
         Somos un grupo de la Universidad Tecnológica Nacional de San Rafael,
         Mendoza y estamos cursando el primer año de la Tecnicatura, aprendiendo
         distintos lenguajes como Python, JavaScript y Java. También aprendimos
         Git, GitBash, GitHub, metodologías ágiles como SCRUM en Jira.
       </p>
-      <div id="contenedor" class="integrantes">
-        <h3>Integrantes:</h3>
-        <div class="integrantes">
-          <p>
-            • Batallón Costa, Juan Pablo • Calcagni, Gabriel • Delgado, Daniela
-            • Jacob, Elías David • Morales, Franco • Rebolloso, Marina •
-            Salinas, Agustín • Tomio Maximiliano •
-          </p>
+      <span id="integrantes"></span>
+      <div id="contenedor">
+        <h4 style="text-align: center">Integrantes:</h4>
+        <div>
+          <div class="integrantes"></div>
         </div>
       </div>
     </article>
-    <h3 align="center">Comentarios</h3>
-    <form class="formulario" id="=contacto">
+    <h2 align="center" id="contacto">Contacto</h2>
+    <form class="formulario">
       <label>
         Nombre:
         <input
@@ -108,14 +107,14 @@
         Comentario:
         <textarea
           class="comentario inputs"
-          placeholder="Ingrese su comentario"
+          placeholder="Ingrese su comentario..."
         ></textarea>
       </label>
       <button id="submit" class="enviar">Enviar</button>
     </form>
     <div id="last-visit"></div>
     <div id="map"></div>
-    <footer align="center">&copy;Terreneitor · Web</footer>
+    <footer align="center"></footer>
     <script src="src/main.js"></script>
   </body>
 </html>
