@@ -13,7 +13,8 @@ const closeMenuButton = $(".close-button");
 const last = $("#last-visit");
 const map = $("#map");
 const inputs = document.querySelectorAll(".inputs");
-const footer = $("footer")
+const year = new Date().getFullYear();
+const footer = $("footer");
 
 const usrersAvatars = [
   {
@@ -155,11 +156,13 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function closeMenuOnClickLinks() {
-    menuLink.forEach((link) =>
-      link.addEventListener("click", () => {
-        closeMenuHeader();
-      })
-    );
+    if (menuLink) {
+      menuLink.forEach((link) =>
+        link.addEventListener("click", () => {
+          closeMenuHeader();
+        })
+      );
+    }
   }
 
   function closeMenuHeader() {
@@ -221,10 +224,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const mapa = createMap(dataLocation.longitud, dataLocation.latitud);
   map.appendChild(mapa);
 
-  const year = new Date().getFullYear()
-  console.log(year)
+  const addFooter = () => {
+    footer.innerHTML = `&copy;Terreneitor · Web ${year}`;
+  };
 
   createAvatars();
   lastVisit();
   resize();
+  addFooter();
 });
