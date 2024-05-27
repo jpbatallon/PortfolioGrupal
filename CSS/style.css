@@ -259,6 +259,7 @@ article {
   border: 2px solid #ccc;
   filter: grayscale();
   transition: filter 800ms;
+  cursor: help;
 }
 
 .avatar-img:is(:hover) {
