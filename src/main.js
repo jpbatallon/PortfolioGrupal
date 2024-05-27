@@ -13,6 +13,7 @@ const closeMenuButton = $(".close-button");
 const last = $("#last-visit");
 const map = $("#map");
 const inputs = document.querySelectorAll(".inputs");
+const footer = $("footer")
 
 const usrersAvatars = [
   {
@@ -219,6 +220,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const mapa = createMap(dataLocation.longitud, dataLocation.latitud);
   map.appendChild(mapa);
+
+  const year = new Date().getFullYear()
+  console.log(year)
+
   createAvatars();
   lastVisit();
   resize();

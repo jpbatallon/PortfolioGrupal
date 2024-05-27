@@ -274,15 +274,34 @@ article {
 .container-users > a {
   padding-top: 18px;
   margin-left: 10px;
-  color: #222;
   font-weight: 500;
-  line-clamp: 1;
+  color: #ddd;
 }
 
 .container-users > a:hover {
   text-decoration: underline;
   color: #f5b041;
   transition: 0.3s all;
+  background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(
+    to left bottom,
+    #f5b041,
+    #b69867,
+    rgba(255, 0, 0, 0.558)
+  );
+}
+
+#contacto {
+  background-clip: text;
+  font-size: xx-large;
+  color: transparent;
+  background-image: linear-gradient(
+    to bottom,
+    #f5b041,
+    #b69867,
+    rgba(255, 0, 0, 0.558)
+  );
 }
 
 .formulario {
@@ -328,7 +347,7 @@ article {
 .enviar {
   border: none;
   right: 10px;
-  padding: 6px;
+  padding: 10px;
   border-radius: 3px;
   width: fit-content;
   margin-left: 2px;
@@ -338,7 +357,7 @@ article {
 
 .enviar:hover {
   outline: 2px solid #f5b041;
-  outline-offset: 2px;
+  outline-offset: 1px;
 }
 
 @media (max-width: 768px) {
@@ -393,6 +412,7 @@ article {
 #last-visit {
   display: flex;
   font-size: 14px;
+  color: #eee;
   justify-content: center;
   margin: 10px auto;
   text-wrap: balance;
