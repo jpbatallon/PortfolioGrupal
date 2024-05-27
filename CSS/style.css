@@ -247,7 +247,41 @@ article {
   justify-content: center;
   margin: 20px auto;
   display: grid;
-  text-align: center;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  width: 100%;
+  gap: 10px;
+}
+
+.avatar-img {
+  width: 60px;
+  height: 60px;
+  border-radius: 100%;
+  border: 2px solid #ccc;
+  filter: grayscale();
+  transition: filter 800ms;
+}
+
+.avatar-img:is(:hover) {
+  box-shadow: 0 0 30px #000;
+  filter: grayscale(0);
+}
+
+.container-users {
+  display: inline-flex;
+}
+
+.container-users > a {
+  padding-top: 18px;
+  margin-left: 10px;
+  color: #222;
+  font-weight: 500;
+  line-clamp: 1;
+}
+
+.container-users > a:hover {
+  text-decoration: underline;
+  color: #f5b041;
+  transition: 0.3s all;
 }
 
 .formulario {
@@ -266,7 +300,7 @@ article {
 .formulario input {
   background-color: #cccccc7a;
   border: none;
-  padding: 5px;
+  padding: 15px;
   border-radius: 3px;
 }
 
@@ -279,7 +313,7 @@ article {
   width: 300px;
   margin-bottom: 5px;
   border-radius: 3px;
-  padding: 5px;
+  padding: 15px;
   background: #cccccc7a;
 }
 
@@ -359,8 +393,12 @@ article {
   display: flex;
   font-size: 14px;
   justify-content: center;
-  margin: 0 auto;
+  margin: 10px auto;
   text-wrap: balance;
+  width: fit-content;
+  padding-inline: 8px;
+  border-radius: 3px;
+  border: 1px solid #999;
 }
 
 .location-map {
