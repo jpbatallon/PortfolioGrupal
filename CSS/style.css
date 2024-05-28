@@ -450,6 +450,8 @@ article {
 }
 
 footer {
+  font-size: small;
+  padding-bottom: 10px;
   padding-top: 150px;
   background-color: #cccccc7a;
 }
