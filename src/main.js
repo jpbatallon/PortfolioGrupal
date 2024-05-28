@@ -18,7 +18,7 @@ const footer = $("footer");
 
 const usrersAvatars = [
   {
-    user1: "https://avatars.githubusercontent.com/u/126372943?s=100&v=4",
+    user1: "https://avatars.githubusercontent.com/u/166578771?v=4",
     user2: "https://avatars.githubusercontent.com/u/106635349?v=4",
     user3: "https://avatars.githubusercontent.com/u/164105708?v=4",
     user4: "https://avatars.githubusercontent.com/u/166343183?v=4",
@@ -45,7 +45,7 @@ const usrersNames = [
 
 const usrersUrl = [
   {
-    user1: "https://github.com/agussalinas",
+    user1: "https://github.com/agus-salinas",
     user2: "https://github.com/maxidtomio",
     user3: "https://github.com/eliasdjacob",
     user4: "https://github.com/jpbatallon",
