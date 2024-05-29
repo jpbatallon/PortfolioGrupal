@@ -206,7 +206,8 @@ document.addEventListener("DOMContentLoaded", () => {
     };
     inputs.forEach(() => saveDataLocalToStorage("formulario", dataJson));
     if (localStorage.length >= 0) {
-      createModal(dataJson.nombre, dataJson.correo);
+      alert(`Muchas gracias por ponerse en contacto con nosotros ${dataJson.nombre}.
+      Pronto le enviaremos un correo a ${dataJson.correo}.`);
     }
   }
 
