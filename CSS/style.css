@@ -455,3 +455,13 @@ footer {
   padding-top: 150px;
   background-color: #cccccc7a;
 }
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 50%;
+  background-color: #1f1e1ec5;
+  color: #d4d4d8;
+}

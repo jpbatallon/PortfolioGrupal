@@ -134,14 +134,19 @@ function createMap(longitud, latitud) {
   return iframe;
 }
 
+const createModal = (dataJson) => {
+  const div = document.createElement("div");
+  div.classList.add("modal");
+  div.innerHTML = `
+    <p>
+      Muchas gracias por ponerse en contacto con nosotros ${dataJson.nombre}.
+      Pronto le enviaremos un correo a ${dataJson.correo}.
+    </p>
+  `;
+  return div;
+};
 document.addEventListener("DOMContentLoaded", () => {
   getCurrentLocation();
-  function resize() {
-    comentario.addEventListener("input", () => {
-      comentario.style.height = "100px";
-      comentario.style.height = comentario.scrollHeight + "px";
-    });
-  }
 
   let isMenuHeaderOpen = false;
 
@@ -201,7 +206,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
     inputs.forEach(() => saveDataLocalToStorage("formulario", dataJson));
     if (localStorage.length >= 0) {
-      alert(`Muchas gracias por enviar el formulario ${dataJson.nombre}.`);
+      createModal(dataJson.nombre, dataJson.correo);
     }
   }
 
@@ -220,6 +225,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const lastVisit = () => {
     last.innerHTML = `<p>Ultima visita: ${dataLocation.fecha}</p>`;
   };
+
+  function resize() {
+    comentario.addEventListener("input", () => {
+      comentario.style.height = "100px";
+      comentario.style.height = comentario.scrollHeight + "px";
+    });
+  }
 
   const mapa = createMap(dataLocation.longitud, dataLocation.latitud);
   map.appendChild(mapa);
