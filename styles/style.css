@@ -254,6 +254,9 @@ article {
   border: 2px solid #ccc;
   transition: filter 800ms;
   cursor: help;
+}
+
+.avatar-img:hover {
   box-shadow: 0 0 10px #000;
 }
 
@@ -269,7 +272,6 @@ article {
 }
 
 .container-users > a:hover {
-  text-decoration: underline;
   color: #f5b041;
   transition: 0.3s all;
   background-clip: text;
@@ -433,12 +435,17 @@ footer {
   background-color: #cccccc7a;
 }
 
+.modal-container {
+  position: relative;
+  background-color: #1f1e1ec5;
+}
+
 .modal {
   position: fixed;
   top: 0;
-  left: 0;
-  width: 50%;
-  height: 50%;
-  background-color: #1f1e1ec5;
+  left: 50%;
+  width: 400px;
+  height: 300px;
+  background-color: #444;
   color: #d4d4d8;
 }
