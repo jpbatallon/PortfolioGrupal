@@ -138,13 +138,16 @@ const createModal = (dataJson) => {
   const div = document.createElement("div");
   div.classList.add("modal");
   div.innerHTML = `
-    <p>
-      Muchas gracias por ponerse en contacto con nosotros ${dataJson.nombre}.
-      Pronto le enviaremos un correo a ${dataJson.correo}.
-    </p>
+    <div class="modal-container">
+      <p>
+        Muchas gracias por ponerse en contacto con nosotros ${dataJson.nombre}.
+        Pronto le enviaremos un correo a ${dataJson.correo}.
+      </p>
+    </div>
   `;
-  return div;
+  document.body.appendChild(div);
 };
+
 document.addEventListener("DOMContentLoaded", () => {
   getCurrentLocation();
 
@@ -206,8 +209,9 @@ document.addEventListener("DOMContentLoaded", () => {
     };
     inputs.forEach(() => saveDataLocalToStorage("formulario", dataJson));
     if (localStorage.length >= 0) {
-      alert(`Muchas gracias por ponerse en contacto con nosotros ${dataJson.nombre}.
-      Pronto le enviaremos un correo a ${dataJson.correo}.`);
+      alert(
+        `Muchas gracias por ponerse en contacto con nosotros, ${dataJson.nombre}. Pronto le enviaremos un correo a: ${dataJson.correo}.`
+      );
     }
   }
 
