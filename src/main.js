@@ -1,4 +1,6 @@
+// Se crea función selectora del DOM
 const $ = (selector) => document.querySelector(selector);
+// Constantes que seleccionan el DOM
 const names = $("#name");
 const email = $("#mail");
 const form = $("form");
@@ -13,9 +15,10 @@ const closeMenuButton = $(".close-button");
 const last = $("#last-visit");
 const map = $("#map");
 const inputs = document.querySelectorAll(".inputs");
+const info = $("#sys-info");
 const year = new Date().getFullYear();
 const footer = $("footer");
-
+// Array de urls con el avatar de cada usuario de github
 const usrersAvatars = [
   {
     user1: "https://avatars.githubusercontent.com/u/166578771?v=4",
@@ -29,7 +32,7 @@ const usrersAvatars = [
       "https://avatars.githubusercontent.com/u/93176365?s=400&u=256e212b81ba355aa6d1bda5b4f9882ed53474ea&v=4",
   },
 ];
-
+// Array de nombres de usuarios
 const usrersNames = [
   {
     user1: "Agustín Salinas",
@@ -42,7 +45,7 @@ const usrersNames = [
     user8: "Gabriel Calcagni",
   },
 ];
-
+// Array de urls de github
 const usrersUrl = [
   {
     user1: "https://github.com/agus-salinas",
@@ -56,6 +59,10 @@ const usrersUrl = [
   },
 ];
 
+/* 
+Función para obtener información de un array e iterar cada dato para poder crear un template
+e ingresarlos al HTML
+*/
 function createAvatars() {
   const userAvatar = usrersAvatars[0];
   const userNames = usrersNames[0];
@@ -77,6 +84,7 @@ function createAvatars() {
   $(".integrantes").innerHTML = avatarHtml;
 }
 
+// Función para formatear la fecha
 function formatDate(date) {
   const dateFormat = new Date(date).toLocaleDateString("es-Es", {
     year: "numeric",
@@ -89,6 +97,7 @@ function formatDate(date) {
   return dateFormat;
 }
 
+// Función donde se utiliza la API del navegador y se accede a los datos de posición (GPS)
 const getCurrentLocation = () => {
   if ("geolocation" in navigator) {
     navigator.geolocation.getCurrentPosition((position) => {
@@ -118,12 +127,17 @@ const getCurrentLocation = () => {
   }
 };
 
+// Función para guardar datos en el localstorage
 function saveDataLocalToStorage(name, data) {
   const res = JSON.stringify(data);
   localStorage.setItem(name, res);
   return true;
 }
 
+/* 
+Función para crear un iframe y luego ingresar los datos de posicionamiento global
+y se le pasan los parámetros de longitud y latitud
+*/
 function createMap(longitud, latitud) {
   const urlMap = `https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3362.721134731404!2d${longitud}!3d${latitud}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMzLCsDMzJzM3LjAiUyA2NcKwMTQnMDYuNSJX!5e0!3m2!1ses-419!2sar!4v1716605671110!5m2!1ses-419!2sar`;
   const iframe = document.createElement("iframe");
@@ -133,7 +147,7 @@ function createMap(longitud, latitud) {
   iframe.classList.add("location-map");
   return iframe;
 }
-
+// Función para crear un modal e ingresarlo al HTML
 const createModal = (dataJson) => {
   const div = document.createElement("div");
   div.classList.add("modal");
@@ -148,11 +162,44 @@ const createModal = (dataJson) => {
   document.body.appendChild(div);
 };
 
+function formatUserAgent(userAgent) {
+  let formattedUserAgent = userAgent;
+
+  if (
+    userAgent.includes("Macintosh") ||
+    userAgent.includes("iPhone") ||
+    userAgent.includes("iPad")
+  ) {
+    formattedUserAgent = "Apple Safari";
+  } else if (userAgent.includes("Windows NT 10.0")) {
+    formattedUserAgent = "Windows NT 10.0";
+  } else if (userAgent.includes("Android")) {
+    formattedUserAgent = "Android OS";
+  } else if (userAgent.includes("Linux")) {
+    formattedUserAgent = "Linux OS";
+  }
+
+  return formattedUserAgent;
+}
+// Función para detectar la información del sistema a través de la API del navegador
+function getInfo() {
+  const userAgent = formatUserAgent(navigator.userAgent);
+
+  const vendor = navigator.vendor;
+  const lang = navigator.language;
+  const online = navigator.onLine;
+  const memory = navigator.deviceMemory * 1.95 || "desconocida";
+  const cores = navigator.hardwareConcurrency || "desconocida";
+  return { userAgent, vendor, lang, online, memory, cores };
+}
+
+// En cuanto el DOM esté listo empieza la ejecución de funciones
 document.addEventListener("DOMContentLoaded", () => {
+  // Se inicializa la función de geolocalización
   getCurrentLocation();
 
   let isMenuHeaderOpen = false;
-
+  // Función para abrir el menú responsive y detectar eventos
   function openHeaderMenu() {
     menuHeader.style.display = "block";
     menuButton.style.display = "none";
@@ -162,7 +209,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.addEventListener("click", outSideClick);
     document.addEventListener("click", closeMenuOnClickLinks);
   }
-
+  // Evento de cierre del menú cuando se hace click en cualquier link del mismo
   function closeMenuOnClickLinks() {
     if (menuLink) {
       menuLink.forEach((link) =>
@@ -172,7 +219,7 @@ document.addEventListener("DOMContentLoaded", () => {
       );
     }
   }
-
+  // Función para cerrar el menú
   function closeMenuHeader() {
     menuHeader.style.display = "";
     menuButton.style.display = "";
@@ -180,11 +227,11 @@ document.addEventListener("DOMContentLoaded", () => {
     isMenuHeaderOpen = false;
     document.addEventListener("click", outSideClick);
   }
-
+  // Cierre del menú con el botón
   function closeButton() {
     closeMenuButton.addEventListener("click", closeMenuHeader);
   }
-
+  // Evento de escucha del botón del menú
   menuButton.onclick = function (event) {
     event.stopPropagation();
     if (!isMenuHeaderOpen) {
@@ -194,13 +241,13 @@ document.addEventListener("DOMContentLoaded", () => {
       closeMenuHeader();
     }
   };
-
+  // Función para detectar el click fuera del menú y fuera del botón para poder cerrarse
   function outSideClick(event) {
     if (!menuHeader.contains(event.target) && event.target !== menuButton) {
       closeMenuHeader();
     }
   }
-
+  // Función para enviar datos del formulario en formato JSON al localstorage y crear la alerta
   function sendDataForm() {
     const dataJson = {
       nombre: names.value,
@@ -214,11 +261,11 @@ document.addEventListener("DOMContentLoaded", () => {
       );
     }
   }
-
+  // Evento de escucha del botón de envío
   submitButton.addEventListener("click", () => {
     sendDataForm();
   });
-
+  // Función para obtener la fecha que se guardó en el localstorage anteriormente
   function getDate() {
     const fecha = localStorage.getItem("localization");
     const convertData = JSON.parse(fecha);
@@ -226,27 +273,64 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   const dataLocation = getDate();
-
+  // Se crea el template con los datos
   const lastVisit = () => {
     last.innerHTML = `<p>Ultima visita: ${dataLocation.fecha}</p>`;
   };
-
+  // Función para reajustar el tamaño del textarea mientras se escribe en él
   function resize() {
     comentario.addEventListener("input", () => {
       comentario.style.height = "100px";
       comentario.style.height = comentario.scrollHeight + "px";
     });
   }
-
+  // Se crea el mapa pasandole los argumentos
   const mapa = createMap(dataLocation.longitud, dataLocation.latitud);
   map.appendChild(mapa);
-
+  // Se crea template para Información del Sistema
+  const { userAgent, vendor, lang, online, memory, cores } = getInfo();
+  const createInfo = () => {
+    info.innerHTML = `
+    <div>
+      <h4 style="text-align: center">Información de su Sistema</h4>
+      <table cellspadding="10">
+        <tr>
+          <td>Sistema Operativo:</td>
+          <td>${userAgent}</td>
+        </tr>
+        <tr>
+          <td>Navegador:</td>
+          <td>${vendor}</td>
+        </tr>
+        <tr>
+          <td>Idioma:</td>
+          <td>${lang}</td>
+        </tr>
+        <tr>
+          <td>Núcleos Procesador:</td>
+          <td>${cores} CPUs</td>
+        </tr>
+        <tr>
+          <td>Memoria Total:</td>
+          <td>${memory} GB</td>
+        </tr>
+        <tr>
+          <td>Memoria Disponible Aproximada:</td>
+          <td>${memory / 2} GB</td>
+        </tr>
+      </table>
+    </div>
+    `;
+  };
+  // Ingresamos los datos en el footer
   const addFooter = () => {
     footer.innerHTML = `&copy;Terreneitor · Web ${year}`;
   };
-
+  // Inicializamos las demás funciones
   createAvatars();
   lastVisit();
   resize();
+  createInfo();
   addFooter();
+  getInfo();
 });

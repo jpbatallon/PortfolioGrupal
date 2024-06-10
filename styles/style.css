@@ -449,3 +449,14 @@ footer {
   background-color: #444;
   color: #d4d4d8;
 }
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  color: #eee;
+}
+th, td {
+  border: 1px solid #555;
+  padding: 10px;
+  text-align: left;
+}
