@@ -318,6 +318,10 @@ document.addEventListener("DOMContentLoaded", () => {
           <td>Memoria Disponible Aproximada:</td>
           <td>${memory / 2} GB</td>
         </tr>
+        <tr>
+          <td>Usuario en Línea:</td>
+          <td>${online ? "En línea" : "Desconectado"}</td>
+        </tr>
       </table>
     </div>
     `;
