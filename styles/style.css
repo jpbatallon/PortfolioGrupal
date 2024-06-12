@@ -116,7 +116,7 @@ header {
   position: fixed;
   top: 0;
   left: 0;
-  height: 100vh;
+  height: 100dvh;
   width: 100%;
   background-color: #b69867;
   display: none;
@@ -452,11 +452,20 @@ footer {
 
 table {
   border-collapse: collapse;
-  width: 100%;
+  width: 50%;
   color: #eee;
+  justify-content: center;
+  margin: 0 auto;
 }
-th, td {
+th,
+td {
   border: 1px solid #555;
   padding: 10px;
   text-align: left;
+}
+
+@media (max-width: 400px) {
+  table {
+    width: 100%;
+  }
 }
