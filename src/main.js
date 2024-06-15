@@ -25,7 +25,6 @@ const usrersAvatars = [
     user2: "https://avatars.githubusercontent.com/u/106635349?v=4",
     user3: "https://avatars.githubusercontent.com/u/164105708?v=4",
     user4: "https://avatars.githubusercontent.com/u/166343183?v=4",
-    user5: "https://avatars.githubusercontent.com/u/128757903?v=4",
     user6: "https://avatars.githubusercontent.com/u/164107854?v=4",
     user7: "https://avatars.githubusercontent.com/u/134340520?v=4",
     user8:
@@ -39,7 +38,6 @@ const usrersNames = [
     user2: "Maximiliano Tomio",
     user3: "Elias Jacob",
     user4: "Juan P. Batallón",
-    user5: "Daniela Delgado",
     user6: "Marina Rebolloso",
     user7: "Franco Morales",
     user8: "Gabriel Calcagni",
@@ -52,7 +50,6 @@ const usrersUrl = [
     user2: "https://github.com/maxidtomio",
     user3: "https://github.com/eliasdjacob",
     user4: "https://github.com/jpbatallon",
-    user5: "https://github.com/silvia-daniela-delgado",
     user6: "https://github.com/marinarebolloso",
     user7: "https://github.com/Mendoxeneixe",
     user8: "https://github.com/solidsnk86",
@@ -191,6 +188,51 @@ function getInfo() {
   const memory = navigator.deviceMemory * 1.95 || "desconocida";
   const cores = navigator.hardwareConcurrency || "desconocida";
   return { userAgent, vendor, lang, online, memory, cores };
+}
+
+// Función para arrastrar logo
+const $img = document.getElementById("logo-img");
+
+$img.addEventListener("mousedown", startDrag);
+$img.addEventListener("touchstart", startDrag);
+
+let isDragging = false;
+let startX, startY, initialX, initialY;
+
+function startDrag(event) {
+  isDragging = true;
+  startX =
+    event.type === "mousedown" ? event.clientX : event.touches[0].clientX;
+  startY =
+    event.type === "mousedown" ? event.clientY : event.touches[0].clientY;
+  initialX = $img.offsetLeft;
+  initialY = $img.offsetTop;
+
+  document.addEventListener("touchmove", drag);
+  document.addEventListener("mouseup", endDrag);
+  document.addEventListener("touchend", endDrag);
+}
+
+function drag(event) {
+  if (isDragging) {
+    let currentX =
+      event.type === "mousemove" ? event.clientX : event.touches[0].clientX;
+    let currentY =
+      event.type === "mousemove" ? event.clientY : event.touches[0].clientY;
+    let dx = currentX - startX;
+    let dy = currentY - startY;
+
+    $img.style.left = initialX + dx + "px";
+    $img.style.top = initialY + dy + "px";
+  }
+}
+
+function endDrag() {
+  isDragging = false;
+  document.removeEventListener("mousemove", drag);
+  document.removeEventListener("touchmove", drag);
+  document.removeEventListener("mouseup", endDrag);
+  document.removeEventListener("touchend", endDrag);
 }
 
 // En cuanto el DOM esté listo empieza la ejecución de funciones
