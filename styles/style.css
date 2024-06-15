@@ -137,7 +137,7 @@ header {
     height: 0;
   }
   100% {
-    height: 100vh;
+    height: 100dvh;
   }
 }
 
@@ -432,7 +432,7 @@ footer {
   font-size: small;
   padding-bottom: 10px;
   padding-top: 150px;
-  background-color: #cccccc7a;
+  background-color: #838383;
 }
 
 .modal-container {
@@ -464,8 +464,12 @@ td {
   text-align: left;
 }
 
-@media (max-width: 400px) {
-  table {
+.contenedor-info table {
+  width: 50%;
+}
+
+@media (min-width: 762px) {
+  .contenedor-info table {
     width: 100%;
   }
 }

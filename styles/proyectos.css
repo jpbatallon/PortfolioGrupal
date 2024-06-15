@@ -21,7 +21,7 @@
 
 .contenedor-imagen img {
   height: 180px;
-  width: 200px;
+  width: max-content;
   margin-top: 10px;
   border-radius: 4px;
 }
@@ -72,36 +72,6 @@
 }
 
 @media (max-width: 1024px) {
-  .proyecto {
-    grid-template-columns: repeat(min-max(150px, 2fr));
-    grid-column: 2fr;
-  }
-
-  .proyecto p {
-    line-clamp: 2;
-  }
-
-  .botones {
-    gap: 4px;
-  }
-}
-
-@media (max-width: 950px) {
-  .proyecto {
-    grid-template-columns: repeat(min-max(150px, 2fr));
-    grid-column: 2fr;
-  }
-
-  .proyecto p {
-    line-clamp: 2;
-  }
-
-  .botones {
-    gap: 4px;
-  }
-}
-
-@media (max-width: 850px) {
   .proyecto {
     grid-template-columns: repeat(min-max(150px, 2fr));
     grid-column: 2fr;

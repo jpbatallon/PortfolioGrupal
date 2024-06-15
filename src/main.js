@@ -293,7 +293,7 @@ document.addEventListener("DOMContentLoaded", () => {
     info.innerHTML = `
     <div>
       <h4 style="text-align: center">Información de su Sistema</h4>
-      <table cellspadding="10">
+      <table>
         <tr>
           <td>Sistema Operativo:</td>
           <td>${userAgent}</td>
