@@ -21,7 +21,7 @@
 
 .contenedor-imagen img {
   height: 180px;
-  width: max-content;
+  width: 180px;
   margin-top: 10px;
   border-radius: 4px;
 }
@@ -34,11 +34,16 @@
 
 .botones > a {
   padding: 4px 8px;
-  border: 1px solid #000000;
+  border: 1px solid #222;
   border-radius: 8px;
   background: rgba(69, 35, 147, 0.878);
   cursor: pointer;
   margin: 2px;
+}
+
+.botones a:hover {
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
 }
 
 @media (max-width: 768px) {
