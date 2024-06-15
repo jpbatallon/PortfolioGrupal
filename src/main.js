@@ -190,6 +190,51 @@ function getInfo() {
   return { userAgent, vendor, lang, online, memory, cores };
 }
 
+// Función para arrastrar logo
+const $img = document.getElementById("logo-img");
+
+$img.addEventListener("mousedown", startDrag);
+$img.addEventListener("touchstart", startDrag);
+
+let isDragging = false;
+let startX, startY, initialX, initialY;
+
+function startDrag(event) {
+  isDragging = true;
+  startX =
+    event.type === "mousedown" ? event.clientX : event.touches[0].clientX;
+  startY =
+    event.type === "mousedown" ? event.clientY : event.touches[0].clientY;
+  initialX = $img.offsetLeft;
+  initialY = $img.offsetTop;
+
+  document.addEventListener("touchmove", drag);
+  document.addEventListener("mouseup", endDrag);
+  document.addEventListener("touchend", endDrag);
+}
+
+function drag(event) {
+  if (isDragging) {
+    let currentX =
+      event.type === "mousemove" ? event.clientX : event.touches[0].clientX;
+    let currentY =
+      event.type === "mousemove" ? event.clientY : event.touches[0].clientY;
+    let dx = currentX - startX;
+    let dy = currentY - startY;
+
+    $img.style.left = initialX + dx + "px";
+    $img.style.top = initialY + dy + "px";
+  }
+}
+
+function endDrag() {
+  isDragging = false;
+  document.removeEventListener("mousemove", drag);
+  document.removeEventListener("touchmove", drag);
+  document.removeEventListener("mouseup", endDrag);
+  document.removeEventListener("touchend", endDrag);
+}
+
 // En cuanto el DOM esté listo empieza la ejecución de funciones
 document.addEventListener("DOMContentLoaded", () => {
   // Se inicializa la función de geolocalización

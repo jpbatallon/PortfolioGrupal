@@ -9,11 +9,11 @@
 }
 
 .proyecto {
-  border: 1px solid #333;
+  border: 1px solid #444;
   padding: 10px 10px;
   max-width: 400px;
   border-radius: 4px;
-  background: linear-gradient(45deg, rgb(48, 109, 166), rgba(100 60 190));
+  background: linear-gradient(45deg, rgba(48, 109, 166, 0.527), rgba(99, 60, 190, 0.534));
   text-wrap: balance;
   overflow: hidden;
   color: #f0f0f0;
@@ -34,8 +34,8 @@
 
 .botones > a {
   padding: 4px 8px;
-  border: 1px solid #222;
-  border-radius: 8px;
+  border: 1px solid rgba(120, 76, 223, 0.76);
+  border-radius: 6px;
   background: rgba(69, 35, 147, 0.878);
   cursor: pointer;
   margin: 2px;
