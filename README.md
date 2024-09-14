@@ -22,5 +22,5 @@
 <hr />
 
 <div align="center">
-    Terreitor · UTNFRSR
+    Terreneitor · UTNFRSR
 </div>
